@@ -170,3 +170,200 @@
 /// tryed to implement pallidrome functionality;
 
 /////print only one subsequence of array whose sum is k
+
+// #include<bits/stdc++.h>
+// using namespace std;
+// void print(vector<int>a,int i,int n,vector<int>b)//recursivefunction
+// {
+//     if(i>=n)
+//     {
+//         for(auto &pr: b)
+//         cout<<pr<<" "; cout<<endl;
+//         return;
+//     }
+//     b.push_back(a[i]);
+//     print(a,i+1,n,b);
+//     b.pop_back();
+//     print(a,i+1,n,b);
+
+// }
+// int main()
+// {
+//     vector<int> a={1,2,4};
+//     int n=a.size();
+//     vector<int> v;
+//     print(a,0,n,v);
+//     return 0;
+
+// }
+
+/////////
+
+// combinations of elements of a array
+
+// #include <iostream>
+// #include <vector>
+// using namespace std;
+
+// void generateCombinations(vector<char>& arr, string current, int index, vector<string>& result) {
+
+//     if (index == arr.size()) {
+//         result.push_back(current); // Base case: add current combination to results
+//         return;
+//   }
+//   current += arr[index];
+//     generateCombinations(arr, current, index + 1, result);
+//     current.pop_back();
+//   generateCombinations(arr, current, index + 1, result);
+// }
+// int main() {
+
+//     vector<char> chars = {'a', 'b', 'c'};
+
+//     vector<string> combinations;
+
+//     generateCombinations(chars, "", 0, combinations);
+//  for (string comb : combinations) {
+
+//         cout << comb << endl;
+
+//     }
+//     return 0;
+
+// }
+
+//////
+// total number of subsequences of array whose sum is k
+// #include<bits/stdc++.h>
+// using namespace std;
+
+// int count(int i,int s,int sum,int arr[],int n)
+// {
+//     if(i>=n)
+//     {
+//         if(sum==s) return 1;
+//         else return 0;
+//         return 0;
+//     }
+//     s+=arr[i];
+//     int l=count(i+1,s,sum,arr,n);
+//     s-=arr[i];
+//     int r=count(i+1,s,sum,arr,n);
+//     return l+r;
+
+// }
+
+// int main()
+// {
+//     int arr[]={1,2,3,1};
+//     int n=4;
+//     int k=3;
+// cout<<"total subsequences whose sum is "<< k<<" is "<<count(0,0,k,arr,n);
+//     return 0;
+// }
+
+// to print only one subsequence of array whose sum is k
+
+// #include<bits/stdc++.h>
+// using namespace std;
+
+// bool count(int i,int s,int sum,int arr[],int n,vector<int> v)
+// {
+//     if(i>=n)
+//     {
+//         if(sum==s)
+//         {
+//             for(auto &pr:v) cout<<pr<<" "; cout<<endl;
+//             return true;
+//         }
+//         else return false;
+//         // return false;
+//     }
+//     v.push_back(arr[i]);
+//     s+=arr[i];
+//     if(count(i+1,s,sum,arr,n,v)==true) return true;
+//     s-=arr[i];
+//     v.pop_back();
+//     if(count(i+1,s,sum,arr,n,v)==true ) return true;
+
+// return false;
+// }
+
+// int main()
+// {
+//     int arr[]={2,3,1};
+//     int n=3;
+//     int k=3;
+//     count(0,0,k,arr,n,{});
+//     return 0;
+// }
+
+// generate all  paranthesis which are valid
+
+// #include <bits/stdc++.h>
+// using namespace std ;
+// void generate(string s,int o,int c,int n,vector<string> &v)
+// {
+//     if(s.length()==2*n)
+//     {
+//         v.push_back(s);
+//         return;
+//     }
+//     if(o>0)
+//     {
+//         s.push_back('(');
+//          generate(s,o-1,c,n,v);
+//       s.pop_back();
+//     }
+
+//      if(c>0)
+//     {
+//         if(o<c)
+//         s.push_back(')');
+//          generate(s,o,c-1,n,v);
+//     }
+
+// }
+// int main()
+// {
+//     vector<string > v;
+//     generate("",2,2,2,v);
+//     for(auto &pr:v) cout<<pr<<" ";
+//     return 0;
+
+// }
+
+// how to generate all possible permutations of characrers in the array using recursion in cpp
+
+// #include <iostream>
+// #include <vector>
+
+// using namespace std;
+
+// void permute(vector<char>& nums, int index, vector<vector<char>>& result) {
+//     if (index == nums.size()) {
+//         result.push_back(nums);
+//         return;
+//     }
+
+//     for (int i = index; i < nums.size(); i++) {
+//         swap(nums[index], nums[i]);
+//         permute(nums, index + 1, result);
+//         swap(nums[index], nums[i]); // Backtrack
+//     }
+// }
+
+// int main() {
+//     vector<char> nums = {'a', 'b', 'c'};
+//     vector<vector<char>> result;
+//     permute(nums, 0, result);
+
+//     for (auto& permutation : result) {
+//         for (char c : permutation) {
+//             cout << c << " ";
+//         }
+//         cout << endl;
+//     }
+
+//     return 0;
+// }
