@@ -102,7 +102,7 @@
 //     return 0;
 // }
 
-//printing all subsequences whose sum is k and all the sub sequence are unique and sorted in order
+//printing all subsequences whose sum is k and all the sub sequence are unique and sorted in order as given in array
 // #include <bits/stdc++.h>
 // using namespace std;
 // void solve(vector<int>& nums, int sum ,int ind, vector<int> ds)
@@ -131,6 +131,28 @@
 //     solve(nums,sum,0,{});
 //     return 0;
 // }
+
+//generate all subset unique and use the element of array once to create a particular subset -
+//  void solve (vector<int> &nums, int i , vector<int> v, vector<vector<int>> & vv)
+//  {
+//         vv.push_back(v);
+//     for(int j=i;j<nums.size();j++)
+//     {
+//         if(j!=i && nums[j]==nums[j-1]) continue;
+//         v.push_back(nums[j]);
+//         solve(nums, j+1, v,vv);
+//         v.pop_back();
+//     }
+//  }
+//     vector<vector<int>> subsetsWithDup(vector<int>& nums) {
+//          vector<vector<int>> vv;
+//         sort(nums.begin(),nums.end());
+//         solve(nums, 0, {} ,vv);
+//         return vv;
+//     }
+// };
+
+
 /////  all sub sequences for a given string
 
 // #include<bits/stdc++.h>
