@@ -102,6 +102,35 @@
 //     return 0;
 // }
 
+//printing all subsequences whose sum is k and all the sub sequence are unique and sorted in order
+// #include <bits/stdc++.h>
+// using namespace std;
+// void solve(vector<int>& nums, int sum ,int ind, vector<int> ds)
+// {
+//     if(sum==0)
+//     {
+//         for(int i=0;i<ds.size();i++)
+//         {
+//             cout<<ds[i]<<" ";
+//         }cout<<endl;
+//         return;
+//     }
+//     for(int i=ind;i<nums.size();i++)
+//     {
+//         if(ind<i && nums[i]==nums[i-1]) continue; //check for duplicasy in it 
+//         if(nums[i]>sum) break; //if next element is greater than the required ,then we will brack. here sum is remaining required sum
+//         ds.push_back(nums[i]);   //note dont write sum-=nums[i]; will not work ,dont know why
+//         solve(nums,sum-nums[i],i+1,ds);
+//         ds.pop_back();      
+//     }
+// }
+// int main() {
+
+//    vector<int> nums={1,1,2,3,4};
+//     int sum=5;
+//     solve(nums,sum,0,{});
+//     return 0;
+// }
 /////  all sub sequences for a given string
 
 // #include<bits/stdc++.h>
@@ -114,11 +143,10 @@
 //         return;
 //     }
 //     char ch=s[i];
-//     s1=s1+ ch;
+//     s1=s1+ ch; //keep in mind
 //     print(s,i+1,n,s1);
-//     s1.pop_back();
-//     // s1.erase(s1.length()-1);
-
+//     s1.pop_back(); // as string is a stl so we can use pop back
+//     // s1.erase(s1.length()-1);  //this also works
 //     print(s,i+1,n,s1);
 // }
 // int main()
@@ -133,28 +161,24 @@
 ////////////////reverse of array using recursion
 
 // Online C++ compiler to run C++ program online
+
 // #include <iostream>
 // using namespace std;
 // void rec(int *a,int i,int j)
 // {
 //     if(i>=j) return;
-
 // rec(a,i+1,j-1);
 // int temp;
 // temp=*(a+i);
 // *(a+i)=*(a+j);
 // *(a+j)=temp;
-
 // }
 // int pall(string s,int i,int j)
-// {
-
-// }
+// { }
 // int main() {
 //     // Write C++ code here
-//     // std::cout << "Try programiz.pro";
 //     int a[5]={1,2,3,4,5};
-//     // int a=[1,2,3,4,5];
+//     // int a=[1,2,3,4,5];   // remember
 //     rec(a,0,4);
 //     for(int i=0;i<5;i++)
 //     {
@@ -183,7 +207,6 @@
 //     print(a,i+1,n,b);
 //     b.pop_back();
 //     print(a,i+1,n,b);
-
 // }
 // int main()
 // {
@@ -192,7 +215,6 @@
 //     vector<int> v;
 //     print(a,0,n,v);
 //     return 0;
-
 // }
 
 /////////
