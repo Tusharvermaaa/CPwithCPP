@@ -1,4 +1,4 @@
-// printing subsequences whose sum is k
+// printing subsequences 
 //  printing all the subsequences of an array
 // note- subarray id different from subsequence
 //. sub array is contigious
@@ -47,9 +47,7 @@
 //         return;
 //     }
 //     v.push_back(arr[i]);
-//     sum+=arr[i];
 //     print(arr,i+1,n,v);
-//     sum-=v[v.size()-1];
 //     v.pop_back();
 //     print(arr,i+1,n,v);
 
