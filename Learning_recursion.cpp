@@ -463,3 +463,73 @@
 
 //     return 0;
 // }
+// // // bruteforce method of making permutations of given array that uses extra space of map to check the absense or presence of array element
+// #include <bits/stdc++.h>
+
+// using namespace std;
+// void permute(vector<int> &nums,vector<int> &v,vector<vector<int>> &vv, map<int,int> &m)
+// {
+//     if(nums.size()==v.size())
+//     {
+//         for(auto &pr: v)cout<<pr<<" "; cout<<endl; return;
+//     }
+//     for(int i=0;i<nums.size();i++)
+//     {
+//         if(m[nums[i]]==0)
+//         {
+//             v.push_back(nums[i]);
+//             m[nums[i]]++;
+//             permute(nums, v, vv,m);
+//             v.pop_back();
+//             m[nums[i]]--;
+//         }
+  
+//     }
+// }
+// int main() {
+  
+//     vector<int> nums={1,2,3,4};
+//     vector<int> v;
+//     vector<vector<int>> vv;
+//     map<int,int> m;
+//     permute(nums, v,vv, m);
+
+//     return 0;
+// }
+
+
+// //most efficinet method of doing this is 
+// // in this method we are using swapping technique to make the permutations of given array 
+// #include<bits/stdc++.h>
+// using namespace std;
+// vector<vector<int>> vv;
+// void solve(vector<int> &nums, int i)
+// {
+//       if(i==nums.size()){ 
+//          vv.push_back(nums);
+//         return;
+           
+//       }
+//     for(int k=i;k<nums.size();k++)
+//     {
+//         swap(nums[i],nums[k]);
+//         solve(nums, i+1);
+//         swap(nums[i],nums[k]);
+//     }
+// }
+
+// int main()
+// {
+//     vector<int> nums={1,2,3,4};
+//     solve(nums,  0);
+//     for(auto &pr: vv)
+//     {
+//         for(auto &p : pr)
+//         {
+//             cout<<p<<" ";
+//         }
+//         cout<<endl;
+//     }
+    
+//     return 0;
+// }
