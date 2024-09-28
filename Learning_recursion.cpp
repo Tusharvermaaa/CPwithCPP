@@ -1,8 +1,8 @@
-// printing subsequences 
-//  printing all the subsequences of an array
-// note- subarray id different from subsequence
-//. sub array is contigious
-// subsequence can be non contigious but in a sequence as given;
+// // printing subsequences 
+// //  printing all the subsequences of an array
+// // note- subarray id different from subsequence
+// // . sub array is contigious
+// // subsequence can be non contigious but in a sequence as given;
 
 // #include <bits/stdc++.h>
 // using namespace std;
@@ -28,12 +28,12 @@
 //     return 0;
 // }
 
-// printing all the sub sequences with sum k
-// printing subsequences whose sum is k
+// // printing all the sub sequences with sum k
+// // printing subsequences whose sum is k
 
 // #include <bits/stdc++.h>
 // using namespace std;
-// int k=10;
+// int k=10; // here is sum k
 // void print(int arr[],int i,int n,vector<int> v)
 // {
 //     if(i>=n )
@@ -50,10 +50,8 @@
 //     print(arr,i+1,n,v);
 //     v.pop_back();
 //     print(arr,i+1,n,v);
-
 // }
 // int main() {
-//     // Write C++ code here
 //     int arr[]={1,2,4,2,5,6,7};
 //     int n=7;
 //     vector<int > v;
@@ -62,12 +60,11 @@
 //     return 0;
 // }
 
-/// more optimal approach
-// printing all the sub sequences with sum k
-// printing subsequences whose sum is k
-
-///////////////////////////////////////////////////////////////
-// it basically selects any elements from the whole provided list
+// // / more optimal approach
+// // printing all the sub sequences with sum k
+// // printing subsequences whose sum is k
+// /////////////////////////////////////////////////////////////
+// // it basically selects any elements from the whole provided list
 
 // #include <bits/stdc++.h>
 // using namespace std;
@@ -98,11 +95,11 @@
 //     int n=7;
 //     vector<int > v;
 //     print(arr,0,n,v,0);
-
 //     return 0;
 // }
 
-//printing all subsequences whose sum is k and all the sub sequence are unique and sorted in order as given in array
+// // printing all subsequences whose sum is k and all the sub sequence are unique and sorted in order as given in array
+// //if given array contain duplicatea elements
 // #include <bits/stdc++.h>
 // using namespace std;
 // void solve(vector<int>& nums, int sum ,int ind, vector<int> ds)
@@ -120,7 +117,7 @@
 //         if(ind<i && nums[i]==nums[i-1]) continue; //check for duplicasy in it 
 //         if(nums[i]>sum) break; //if next element is greater than the required ,then we will brack. here sum is remaining required sum
 //         ds.push_back(nums[i]);   //note dont write sum-=nums[i]; will not work ,dont know why
-//         solve(nums,sum-nums[i],i+1,ds);
+//         solve(nums,sum-nums[i],i+1,ds);   //here i+1 denotes that we have to take a single element onlu once in a sunarray
 //         ds.pop_back();      
 //     }
 // }
@@ -132,28 +129,91 @@
 //     return 0;
 // }
 
-//generate all subset unique and use the element of array once to create a particular subset -
+// // generate all subset unique and use the element of array once to create a particular subset -
+//   // note that elements in given array are or can be duplicates
+// // question is from leetcode named subset 2
 //  void solve (vector<int> &nums, int i , vector<int> v, vector<vector<int>> & vv)
 //  {
 //         vv.push_back(v);
 //     for(int j=i;j<nums.size();j++)
 //     {
-//         if(j!=i && nums[j]==nums[j-1]) continue;
+//         if(j!=i && nums[j]==nums[j-1]) continue; // to maintain the unique-ness in case of duplicates of v which are going to vv
 //         v.push_back(nums[j]);
-//         solve(nums, j+1, v,vv);
+//         solve(nums, j+1, v,vv);//here j+1 is  correct  as we will use a single element once for single sunset
 //         v.pop_back();
 //     }
 //  }
 //     vector<vector<int>> subsetsWithDup(vector<int>& nums) {
 //          vector<vector<int>> vv;
-//         sort(nums.begin(),nums.end());
+//         sort(nums.begin(),nums.end()); //array should be sorted
 //         solve(nums, 0, {} ,vv);
 //         return vv;
 //     }
 // };
+    
+// //     all subsequences whose sum is sum and all must be unique from gfg
+// // all subsets are unique but we have ussed every element multiples times
+// //elements of given array can have duplicates
+// // question is combination sum from gfg
 
+// void solve(vector<int> &nums,vector<int>& v, int sum, int ind,vector<vector<int>> & vv)
+// {
+//     if(sum==0){ vv.push_back(v); return;}
+    
+//     for(int i=ind ;i<nums.size();i++)
+//     {
+//         if(i>ind && nums[i]==nums[i-1]) continue; //to maintain the duplicates in vv
+//         if(sum<nums[i]) break; // |^ thats why we are doing this 
+//         v.push_back(nums[i]);
+//         solve(nums, v, sum-nums[i], i, vv); /// here i is used as we can use  same element multiple times as wish 
+//         v.pop_back();
+//     }
+// }
+// vector<vector<int> > combinationSum(vector<int> &nums, int summ) {
+        
+        
+//         sort(nums.begin(), nums.end());// array must be sorted in case of duplicates
+        
+//         vector<vector<int>> vv;
+//         vector<int> v;
+//         solve(nums,v,summ , 0,vv );
+//         return vv;
+        
+//     }
+// // creating all the permutations for given array note that all the elements of given array are distinct 
+// // question is permutations from leetcode
+// class Solution {
+// public:
+// void solve(vector<vector<int>>& vv, vector<int> &v, vector<int>&nums, map<int,int> &m)
+// {
+//     if(v.size()==nums.size())
+//     {
+//         vv.push_back(v); return;
+//     }
+//     for(int i=0;i<nums.size();i++)
+//     {
+//         if(!m[nums[i]])
+//         {
+//             v.push_back(nums[i]);
+//             m[nums[i]]++;
+//             solve(vv,v,nums,m);
+//             v.pop_back();
+//             m[nums[i]]--;
 
-/////  all sub sequences for a given string
+//         }
+//     }
+// }
+//     vector<vector<int>> permute(vector<int>& nums) {
+//         vector<vector<int> > vv;
+//         vector<int> v;
+//         map<int,int> m;;
+//         solve(vv,v,nums,m);
+//         return vv;
+        
+//     }
+// };
+
+// ///  all sub sequences for a given string
 
 // #include<bits/stdc++.h>
 // using namespace std;
@@ -180,7 +240,7 @@
 //     return 0;
 // }
 
-////////////////reverse of array using recursion
+// //////////////reverse of array using recursion
 
 // Online C++ compiler to run C++ program online
 
@@ -211,9 +271,9 @@
 
 //     return 0;
 // }
-/// tryed to implement pallidrome functionality;
+// / tryed to implement pallidrome functionality;
 
-/////print only one subsequence of array whose sum is k
+// ///print only one subsequence of array whose sum is k
 
 // #include<bits/stdc++.h>
 // using namespace std;
@@ -239,43 +299,38 @@
 //     return 0;
 // }
 
-/////////
+// ///////
 
-// combinations of elements of a array
+// // combinations of elements of a array this means that generating subsequences of array elements .. this one is done upper side
 
 // #include <iostream>
 // #include <vector>
 // using namespace std;
 
 // void generateCombinations(vector<char>& arr, string current, int index, vector<string>& result) {
-
 //     if (index == arr.size()) {
 //         result.push_back(current); // Base case: add current combination to results
 //         return;
-//   }
-//   current += arr[index];
+//     }
+//     current += arr[index];
 //     generateCombinations(arr, current, index + 1, result);
 //     current.pop_back();
-//   generateCombinations(arr, current, index + 1, result);
+//     generateCombinations(arr, current, index + 1, result);
 // }
 // int main() {
 
 //     vector<char> chars = {'a', 'b', 'c'};
-
 //     vector<string> combinations;
-
 //     generateCombinations(chars, "", 0, combinations);
-//  for (string comb : combinations) {
-
+//     for (string comb : combinations) {
 //         cout << comb << endl;
-
 //     }
 //     return 0;
-
 // }
 
-//////
-// total number of subsequences of array whose sum is k
+// ////
+// // total number of subsequences of array whose sum is k
+// //as we dont need to print the unique ones so we can do this in simple way and count as sum reaches to desired sum
 // #include<bits/stdc++.h>
 // using namespace std;
 
@@ -292,20 +347,18 @@
 //     s-=arr[i];
 //     int r=count(i+1,s,sum,arr,n);
 //     return l+r;
-
 // }
-
 // int main()
 // {
 //     int arr[]={1,2,3,1};
 //     int n=4;
 //     int k=3;
-// cout<<"total subsequences whose sum is "<< k<<" is "<<count(0,0,k,arr,n);
+//     cout<<"total subsequences whose sum is "<< k<<" is "<<count(0,0,k,arr,n);
 //     return 0;
 // }
 
-// to print only one subsequence of array whose sum is k
-
+// // this is important one technique to print only one answer
+// // to print only one subsequence of array whose sum is k
 // #include<bits/stdc++.h>
 // using namespace std;
 
@@ -340,7 +393,8 @@
 //     return 0;
 // }
 
-// generate all  paranthesis which are valid
+// // generate all  paranthesis which are valid
+// // question is from leetcode - valid parenthesis
 
 // #include <bits/stdc++.h>
 // using namespace std ;
@@ -363,8 +417,8 @@
 //         if(o<c)
 //         s.push_back(')');
 //          generate(s,o,c-1,n,v);
+//       //note we are not poping back amy closing one we assume that it ends here
 //     }
-
 // }
 // int main()
 // {
@@ -372,10 +426,10 @@
 //     generate("",2,2,2,v);
 //     for(auto &pr:v) cout<<pr<<" ";
 //     return 0;
-
 // }
 
-// how to generate all possible permutations of characrers in the array using recursion in cpp
+// ///optimal approach to genetate all possible permutations
+// // how to generate all possible permutations of characrers in the array using recursion in cpp
 
 // #include <iostream>
 // #include <vector>
