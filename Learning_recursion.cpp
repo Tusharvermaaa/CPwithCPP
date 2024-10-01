@@ -533,3 +533,75 @@
     
 //     return 0;
 // }
+//🫡
+// non recursive approach of josephus problem - gaddar problem 
+
+// #include <bits/stdc++.h>
+// using namespace std;
+// int main() {
+    
+//     vector<int> arr;
+//     for(int i=0;i<40;i++)
+//     {
+//         arr.push_back(i+1);
+//     }
+//     int k=7;
+//     if(arr.size()==0) return 0;
+//     auto it=arr.begin();
+//     while(arr.size()!=1)
+//     {
+//         for(int p=1;p<=k-1;p++){
+//               it++;
+//             if(it == arr.end()) {
+//                 it = arr.begin();
+//             }
+//         }
+//         arr.erase(it);
+//           if (it == arr.end()) {
+//             it = arr.begin();
+//         }
+//     }
+//     cout<<arr[0]<<endl;
+//     return 0;
+// }
+
+//important question of recursion
+/// recursive approach of josephus problem 
+
+// #include<bits/stdc++.h>
+// using namespace std;
+// int ans;
+
+// void solve(vector<int> & v,int k, int i,auto it)
+// {
+//     if(v.size()==1)
+//     {
+//         ans=v[0];
+//         // cout<<"my ans is "<<ans<<" ";
+//         return;
+//     }
+//     for(int j=1;j<=k;j++)
+//     {
+//          it++;
+//         if(it==v.end()) it=v.begin();
+//     }
+//     v.erase(it);
+//     if(it==v.end())
+//     {
+//         it=v.begin();
+//     }
+//     solve(v,k,i,it);
+// }
+// int main()
+// {
+//     vector<int> v;
+//     for(int i=0;i<5;i++)
+//     {
+//         v.push_back(i+1);
+//     }
+//     int k=2;
+//     solve(v,k-1,0,v.begin());
+//     cout<<ans<<" ";
+//     return 0;
+    
+// }
